@@ -1,0 +1,24 @@
+El dataset del recuperatorio consta de personas que tienen la tarjeta de credito Mastercard, y hay que predecir la baja .
+Hay un solo mes, no hay datos historicos, no existe el problema de buscar un modelo estable.
+El archivo tiene un campo clase que tiene los siguientes valores   {  SI, NO, FUTURO }  .
+ 
+Los registros con SI son los que se dan de baja  ( aqui no hay distincion entre  BAJA+1 y BAJA+2 )
+Los registros con NO son los que continuan teniendo el producto
+Los registros con FUTURO  son en realidad el 50% tomado al azar para los que intencionalmente les borré la clase. Son estos registros los que tenes que predecir.
+ 
+Los modelos SOLO pueden generarse sobre el dataset cuando la clase es { SI, NO }  y se deben aplicar  a  los registros con clase = { FUTURO }
+ 
+Hay que maximizar la ganancia = 7750 * aciertos - 250 * no_aciertos
+ 
+El recuperatorio es individual, y cada persona tiene un archivo distinto, permitiendo de esta forma que entreguen cuando quieran, siempre que sea antes del 31-mar-2017 a las 23:59:59
+O sea, es posible entregar ahora en diciembre.
+
+Una vez que me envien la prediccion, daré confirmación de recepción, y antes de las dos semanas lo corregiré.
+
+El link para bajar tu archivo individual es https://www.dropbox.com/sh/xt47lgjwxb38obe/AAAwH2LYj-_XkWRTDKwWFsXja?dl=0
+
+Te pido bajes el archivo lo antes posible y me confirmes que esta todo ok
+
+saludos,
+
+Gustavo
