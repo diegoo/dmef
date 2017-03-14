@@ -1,0 +1,101 @@
+fecha	archivo	algoritmo	nulos	tipo_umbral	num.trees	vmin.node.size	umbral_promedio	ganancia_promedio	tiempo_promedio	ganancias	umbrales				
+20170313 002644	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	600.00	0.03125	1956944.00	34.95472	1904167.00	1990000.00	1976667.00			
+20170312 235651	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	5000.00	0.03125	1942500.00	29.07808	1835000.00	2079167.00	1913333.00			
+20170312 235933	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	5000.00	0.02966667	1921111.00	28.15855	1696667.00	2160833.00	1905833.00	29.00	29.00	31.00
+20170313 000904	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	2000.00	34.00	1902500.00	32.84625	1773333.00	2138333.00	1795833.00	31.00	36.00	35.00
+20170313 002130	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	700.00	0.03125	1890278.00	36.16403	1727500.00	2006667.00	1936667.00			
+20170313 001612	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	800.00	0.03125	1887222.00	35.95692	1782500.00	1929167.00	1950000.00			
+20170313 001415	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	1000.00	0.03833333	1882500.00	35.25558	1665000.00	1974167.00	2008333.00	49.00	37.00	29.00
+20170312 232207	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	2000.00	34.00	1873889.00	16.12198	1765833.00	2042500.00	1813333.00	35.00	34.00	33.00
+20170313 001059	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	1000.00	0.03125	1863889.00	35.09386	1761667.00	1931667.00	1898333.00			
+20170312 231641	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	5000.00	0.03	1847500.00	13.48238	1640833.00	2084167.00	1817500.00	28.00	28.00	34.00
+20170313 001932	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	800.00	0.03533333	1847500.00	35.89417	1702500.00	1917500.00	1922500.00	42.00	36.00	28.00
+20170312 231733	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	3000.00	0.03125	1837222.00	14.50775	1515833.00	2126667.00	1869167.00			
+20170313 000600	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	2000.00	0.03125	1831389.00	32.9456	1559167.00	2122500.00	1812500.00			
+20170313 000412	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	3000.00	0.03	1827500.00	30.75588	1683333.00	1935000.00	1864167.00	0.03	27.00	33.00
+20170312 232019	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	2000.00	0.03125	1822778.00	16.75862	1500833.00	2094167.00	1873333.00			
+20170313 000116	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	3000.00	0.03125	1822222.00	31.25688	1573333.00	2019167.00	1874167.00			
+20170312 233137	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	600.00	0.03125	1809167.00	16.40852	1685833.00	1794167.00	1947500.00			
+20170313 002959	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	600.00	0.04433333	1807222.00	34.86653	1625833.00	1915833.00	1880000.00	49.00	0.05	34.00
+20170312 231919	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	3000.00	0.03266667	1802500.00	16.5114	1760000.00	1981667.00	1665833.00	37.00	28.00	33.00
+20170313 002450	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	700.00	0.04366667	1779167.00	36.14261	1677500.00	1865833.00	1794167.00	49.00	47.00	35.00
+20170312 233428	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	500.00	0.03125	1776111.00	17.18161	1660833.00	1880833.00	1786667.00			
+20170312 225135	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	2000.00	0.03466667	1775556.00	9.389912	1683333.00	1860000.00	1783333.00	38.00	32.00	34.00
+20170312 234328	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	100.00	0.03125	1766667.00	18.81182	1695000.00	1751667.00	1853333.00			
+20170312 232557	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	800.00	0.03125	1758611.00	18.09841	1688333.00	1895000.00	1692500.00			
+20170312 224751	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	5000.00	0.03233333	1751389.00	8.988991	1567500.00	1917500.00	1769167.00	0.03	34.00	33.00
+20170312 231507	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	5000.00	0.03125	1735833.00	13.41836	1487500.00	1907500.00	1812500.00			
+20170312 225532	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	800.00	31.00	1722500.00	10.33505	1719167.00	1768333.00	1680000.00	35.00	0.03	28.00
+20170312 225812	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	600.00	0.03125	1721667.00	10.38634	1475000.00	1884167.00	1805833.00			
+20170312 232850	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	700.00	0.03125	1717500.00	17.30264	1460000.00	1861667.00	1830833.00			
+20170312 225413	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	800.00	0.03125	1704722.00	10.40953	1591667.00	1785833.00	1736667.00			
+20170312 232453	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	1000.00	0.04233333	1696944.00	16.29166	1617500.00	1879167.00	1594167.00	53.00	39.00	35.00
+20170312 234527	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	100.00	0.06633333	1689444.00	18.08827	1500000.00	1768333.00	1800000.00	71.00	75.00	53.00
+20170312 225019	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	2000.00	0.03125	1688611.00	9.577247	1496667.00	1759167.00	1810000.00			
+20170312 224828	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	3000.00	0.03125	1687778.00	9.575815	1348333.00	1835000.00	1880000.00			
+20170312 231252	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	10000.00	0.03125	1685000.00	11.94671	1477500.00	1898333.00	1679167.00			
+20170312 235515	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	50.00	10000.00	0.02833333	1677500.00	25.10056	1585000.00	1624167.00	1823333.00	31.00	26.00	28.00
+20170312 233720	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	300.00	0.03125	1660556.00	17.31273	1440000.00	1753333.00	1788333.00			
+20170312 232304	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	1000.00	0.03125	1660000.00	16.1282	1333333.00	1833333.00	1813333.00			
+20170312 234015	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	200.00	0.03125	1658611.00	17.07843	1554167.00	1682500.00	1739167.00			
+20170312 235249	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	50.00	10000.00	0.03125	1652778.00	25.30316	1468333.00	1735000.00	1755000.00			
+20170312 233039	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	700.00	0.04133333	1650556.00	16.76726	1552500.00	1731667.00	1667500.00	51.00	33.00	0.04
+20170312 235125	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	20.00	0.06966667	1649167.00	17.53525	1636667.00	1560000.00	1750833.00	75.00	57.00	77.00
+20170312 230339	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	300.00	0.04766667	1648611.00	10.7219	1433333.00	1602500.00	1910000.00	0.05	44.00	49.00
+20170312 224459	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	10000.00	0.03125	1645000.00	8.2317	1548333.00	1865000.00	1521667.00			
+20170312 225214	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	1000.00	0.03125	1645000.00	10.38699	1417500.00	1813333.00	1704167.00			
+20170312 231419	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	10000.00	0.02866667	1635833.00	12.39068	1555000.00	1783333.00	1569167.00	0.03	28.00	28.00
+20170312 222748	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	2000.00	0.03433333	1633611.00	7.578209	1418333.00	1789167.00	1693333.00	35.00	34.00	34.00
+20170312 230136	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	500.00	0.04866667	1633611.00	10.92774	1330833.00	1730833.00	1839167.00	61.00	44.00	41.00
+20170312 225333	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	1000.00	0.03433333	1630833.00	10.20427	1551667.00	1645000.00	1695833.00	38.00	28.00	37.00
+20170312 233328	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	600.00	0.04733333	1621111.00	17.08536	1216667.00	1873333.00	1773333.00	54.00	51.00	37.00
+20170312 233619	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	500.00	45.00	1621111.00	17.46036	1395833.00	1895833.00	1571667.00	56.00	42.00	37.00
+20170312 232749	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	800.00	0.04133333	1614444.00	16.74449	1643333.00	1594167.00	1605833.00	57.00	35.00	32.00
+20170312 230544	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	200.00	0.05033333	1610833.00	11.35695	1464167.00	1620833.00	1747500.00	65.00	38.00	48.00
+20170312 222639	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	2000.00	0.03125	1595000.00	7.512613	1377500.00	1710833.00	1696667.00			
+20170312 224640	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	5000.00	0.03125	1592778.00	8.790213	1378333.00	1766667.00	1633333.00			
+20170312 225611	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	700.00	0.03125	1586667.00	10.28856	1397500.00	1805833.00	1556667.00			
+20170312 230013	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	500.00	0.03125	1573889.00	10.58164	1442500.00	1546667.00	1732500.00			
+20170312 234822	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	50.00	0.06666667	1566389.00	17.13867	1437500.00	1708333.00	1553333.00	56.00	79.00	65.00
+20170312 223001	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	800.00	0.03125	1562222.00	7.498985	1353333.00	1535833.00	1797500.00			
+20170312 225733	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	700.00	0.04166667	1555278.00	10.3946	1478333.00	1540000.00	1647500.00	38.00	44.00	43.00
+20170312 233915	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	300.00	48.00	1553611.00	17.52764	1479167.00	1570000.00	1611667.00	69.00	42.00	33.00
+20170312 230750	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	100.00	0.05666667	1552778.00	10.91432	1475833.00	1500833.00	1681667.00	53.00	68.00	49.00
+20170312 222156	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	10000.00	0.03125	1549722.00	6.707922	1464167.00	1726667.00	1458333.00			
+20170312 223600	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	500.00	0.05	1548889.00	7.573102	1260000.00	1763333.00	1623333.00	49.00	36.00	65.00
+20170312 230418	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	200.00	0.03125	1547500.00	10.41811	1370833.00	1739167.00	1532500.00			
+20170312 222503	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	3000.00	0.03125	1539722.00	7.399479	1201667.00	1882500.00	1535000.00			
+20170312 222820	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	1000.00	0.03125	1531111.00	7.94495	1276667.00	1676667.00	1640000.00			
+20170312 222328	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	5000.00	0.03125	1523333.00	7.0326	1288333.00	1584167.00	1697500.00			
+20170312 223245	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	700.00	0.04133333	1520278.00	7.747488	1405000.00	1653333.00	1502500.00	41.00	46.00	37.00
+20170312 234223	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	20.00	200.00	0.06166667	1514722.00	19.31833	1339167.00	1600000.00	1605000.00	83.00	68.00	34.00
+20170312 224942	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	3000.00	0.03133333	1513333.00	9.235128	1230833.00	1710000.00	1599167.00	25.00	38.00	31.00
+20170312 222930	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	1000.00	44.00	1513056.00	7.958585	1359167.00	1664167.00	1515833.00	37.00	41.00	54.00
+20170312 230216	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	300.00	0.03125	1509722.00	10.40096	1255000.00	1638333.00	1635833.00			
+20170312 222609	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	3000.00	0.03533333	1504722.00	7.365155	1287500.00	1709167.00	1517500.00	32.00	43.00	31.00
+20170312 222432	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	5000.00	29.00	1484722.00	7.186118	983333.3	1877500.00	1593333.00	24.00	29.00	34.00
+20170312 223108	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	800.00	47.00	1482500.00	7.560178	1542500.00	1615833.00	1289167.00	47.00	32.00	62.00
+20170312 223452	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	500.00	0.03125	1453889.00	7.530467	1151667.00	1799167.00	1410833.00			
+20170312 225934	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	600.00	0.04833333	1450000.00	10.53701	1181667.00	1524167.00	1644167.00	53.00	54.00	38.00
+20170312 230624	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	100.00	0.03125	1436389.00	10.71129	1321667.00	1394167.00	1593333.00			
+20170312 223138	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	700.00	0.03125	1398611.00	7.294387	1249167.00	1420833.00	1525833.00			
+20170312 230957	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	50.00	0.05333333	1398333.00	11.21835	1390833.00	1367500.00	1436667.00	56.00	53.00	51.00
+20170312 223421	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	600.00	0.04266667	1388056.00	7.600705	1352500.00	1284167.00	1527500.00	57.00	36.00	35.00
+20170312 223631	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	300.00	0.03125	1382778.00	7.545032	1270000.00	1417500.00	1460833.00			
+20170312 223314	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	600.00	0.03125	1376389.00	7.245989	1302500.00	1428333.00	1398333.00			
+20170312 224606	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	10000.00	0.03	1350000.00	8.168174	1362500.00	1150000.00	1537500.00	36.00	26.00	28.00
+20170312 224102	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	100.00	0.05833333	1340000.00	7.736384	1447500.00	1287500.00	1285000.00	73.00	41.00	61.00
+20170312 234626	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	50.00	0.03125	1333333.00	16.9259	1087500.00	1348333.00	1564167.00			
+20170312 223920	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	200.00	0.04433333	1300833.00	7.821123	1090000.00	1491667.00	1320833.00	45.00	39.00	49.00
+20170312 223811	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	200.00	0.03125	1285278.00	7.593427	1174167.00	1557500.00	1124167.00			
+20170312 223739	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	300.00	0.05366667	1265278.00	7.68052	1104167.00	1333333.00	1358333.00	38.00	51.00	72.00
+20170312 231208	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	10.00	20.00	0.07	1197778.00	10.85092	1123333.00	1190833.00	1279167.00	56.00	0.1	54.00
+20170312 222259	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	10000.00	0.02766667	1196389.00	6.890541	1075833.00	1183333.00	1330000.00	32.00	26.00	25.00
+20170312 223952	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	100.00	0.03125	1158889.00	7.683337	1077500.00	1189167.00	1210000.00			
+20170312 224243	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	50.00	73.00	1109722.00	7.824491	1145833.00	951666.7	1231667.00	0.06	91.00	68.00
+20170312 230830	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	50.00	0.03125	1100000.00	10.53637	882500.00	1151667.00	1265833.00			
+20170312 234927	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	20.00	20.00	0.03125	977500.00	18.62662	727500.00	915833.3	1289167.00			
+20170312 231040	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	10.00	20.00	0.03125	822222.2	11.52485	559166.7	962500.00	945000.00			
+20170312 224426	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	5.00	20.00	62.00	810555.6	7.867978	780833.3	932500.00	718333.3	71.00	61.00	54.00
+20170312 224133	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	50.00	0.03125	741944.4	7.740413	903333.3	505000.00	817500.00			
+20170312 224314	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	5.00	20.00	0.03125	583888.9	7.735113	358333.3	605000.00	788333.3			
