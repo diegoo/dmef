@@ -1,0 +1,15 @@
+fecha	archivo	algoritmo	nulos	tipo_umbral	num.trees	vmin.node.size	umbral_promedio	ganancia_promedio	tiempo_promedio	ganancias	umbrales	
+20170317 111409	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	2000	0.03125	1923056	556.0217	1776667	2050833	1941667	
+20170317 115310	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	2000	0.03633333	1934444	491.1201	1795833	2071667	1935833	0.04	0.032	0.037	
+20170317 121957	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	1000	0.03125	1900556	518.573	1750000	2034167	1917500	
+20170317 130308	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	1000	0.036	1845556	546.4085	1564167	2114167	1858333	0.026	0.04	0.042	
+20170317 132916	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	800	0.03125	1907500	506.6867	1744167	2030833	1947500	
+20170317 140921	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	800	0.038	1824167	505.8882	1547500	2005833	1919167	0.027	0.046	0.041	
+20170317 143553	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	700	0.03125	1907222	513.7672	1785000	2028333	1908333	
+20170317 151917	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	700	0.03733333	1769444	527.985	1495833	1961667	1850833	0.026	0.048	0.038	
+20170317 154847	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	600	0.03125	1929444	565.4403	1775000	2096667	1916667	
+20170317 163623	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	600	0.039	1813889	575.8488	1550000	1940833	1950833	0.027	0.049	0.041	
+20170317 170557	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	500	0.03125	1959167	567.2618	1798333	2194167	1885000	
+20170317 174956	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	500	0.03433333	1795278	544.6113	1564167	1947500	1874167	0.026	0.05	0.027	
+20170317 181827	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	300	0.03125	1950556	548.0327	1874167	2159167	1818333	
+20170317 190243	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	300	0.03633333	1952222	546.6818	1804167	2105833	1946667	0.032	0.044	0.033	
