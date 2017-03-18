@@ -1,0 +1,9 @@
+fecha	archivo	algoritmo	nulos	tipo_umbral	num.trees	vmin.node.size	umbral_promedio	ganancia_promedio	tiempo_promedio	ganancias	umbrales	
+20170317 231005	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	200	0.03125	1978056	520.1187	1775000	2220000	1939167	
+20170317 235227	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	200	0.03866667	1893056	531.6293	1770833	1895000	2013333	0.029	0.051	0.036	
+20170318 001833	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	100	0.03125	1938333	507.3672	1742500	2166667	1905833	
+20170318 010233	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	100	0.03766667	1825000	547.0882	1635000	1922500	1917500	0.028	0.049	0.036	
+20170318 012944	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	50	0.03125	1838889	529.1267	1620833	2075000	1820833	
+20170318 021107	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	50	0.06	1810833	517.9967	1491667	1993333	1947500	0.08	0.058	0.042	
+20170318 023735	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_fijo	800	20	0.03125	1883056	514.3051	1625833	2070000	1953333	
+20170318 031800	data/data.con.nuevas.variables.SI.NO.tsv	ranger	na.roughfix	umbral_estimado	800	20	0.06533333	1826389	503.3163	1528333	1828333	2122500	0.083	0.054	0.059	
