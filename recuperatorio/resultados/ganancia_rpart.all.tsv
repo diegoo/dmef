@@ -1,0 +1,15 @@
+fecha	archivo	algoritmo	cp	minsplit	minbucket	maxdepth	ganancia_promedio	tiempo_promedio	ganancias	
+20170312 201308	data/data.con.nuevas.variables.tsv	rpart	0	50	8	12	1340000	228.1126	1145000	1413333	1461667	
+20170312 202517	data/data.con.nuevas.variables.tsv	rpart	0	50	8	13	1340000	240.9402	1145000	1413333	1461667	
+20170312 203804	data/data.con.nuevas.variables.tsv	rpart	0	50	8	14	1340000	253.7521	1145000	1413333	1461667	
+20170312 205135	data/data.con.nuevas.variables.tsv	rpart	0	50	8	15	1340000	268.3459	1145000	1413333	1461667	
+20170312 210519	data/data.con.nuevas.variables.tsv	rpart	0	50	8	16	1340000	273.0967	1145000	1413333	1461667	
+fecha	archivo	algoritmo	cp	minsplit	minbucket	maxdepth	ganancia_promedio	tiempo_promedio	ganancias	
+20170312 183042	data/data.con.nuevas.variables.tsv	rpart	0	50	8	4	322500	52.22718	0	508333.3	459166.7	
+20170312 183349	data/data.con.nuevas.variables.tsv	rpart	0	50	8	5	322500	61.00878	0	508333.3	459166.7	
+20170312 183907	data/data.con.nuevas.variables.tsv	rpart	0	50	8	6	795555.6	104.2563	620000	938333.3	828333.3	
+20170312 184542	data/data.con.nuevas.variables.tsv	rpart	0	50	8	7	786944.4	129.8612	620000	938333.3	802500	
+20170312 185326	data/data.con.nuevas.variables.tsv	rpart	0	50	8	8	786944.4	153.0528	620000	938333.3	802500	
+20170312 190152	data/data.con.nuevas.variables.tsv	rpart	0	50	8	9	786944.4	167.2131	620000	938333.3	802500	
+20170312 191115	data/data.con.nuevas.variables.tsv	rpart	0	50	8	10	786944.4	185.7965	620000	938333.3	802500	
+20170312 192140	data/data.con.nuevas.variables.tsv	rpart	0	50	8	11	1120278	206.6434	1145000	1413333	802500	
