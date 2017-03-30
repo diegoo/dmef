@@ -1,11 +1,10 @@
 library(plyr)
 
-archivo_entrada <- "data/data.con.nuevas.variables.SI.NO.tsv"
-archivo_salida  <- "data/dataset.xgboost.tsv"
+archivo_entrada <- "data/data.con.nuevas.variables.FUTURO.tsv"
+archivo_salida  <- "data/dataset.xgboost.futuro.tsv"
 
 dataset <- read.table(archivo_entrada, header=TRUE, sep="\t")
 
-dataset$binaria.clase                                      <- ifelse(dataset$clase=="SI", 1, 0)
 dataset$binaria.Master_tadelantosefectivo                  <- ifelse(dataset$Master_tadelantosefectivo=="Y", 1, 0)
 dataset$binaria.Master_tconsumos                           <- ifelse(dataset$Master_tconsumos=="Y", 1, 0)
 dataset$binaria.Visa_tadelantosefectivo                    <- ifelse(dataset$Visa_tadelantosefectivo=="Y", 1, 0)
@@ -49,7 +48,7 @@ dataset$binaria.ttarjeta_master_debitos_automaticos        <- ifelse(dataset$tta
 dataset$binaria.ttarjeta_visa                              <- ifelse(dataset$ttarjeta_visa=="Y", 1, 0)
 dataset$binaria.ttarjeta_visa_debitos_automaticos          <- ifelse(dataset$ttarjeta_visa_debitos_automaticos=="Y", 1, 0)
 dataset$binaria.ttitulos                                   <- ifelse(dataset$ttitulos=="Y", 1, 0)
-dataset$binaria.nueva.1                                    <- revalue(dataset$nueva.1, c("10_10"=1,"10_11"=2,"10_12"=3,"10_19"=4,"10_NA"=5,"19_10"=6,"19_19"=7,"19_NA"=8,"NA_10"=9,"NA_12"=10,"NA_NA"=10))
+dataset$binaria.nueva.1                                    <- revalue(dataset$nueva.1, c("10_10"=1,"10_11"=2,"10_12"=3,"10_19"=4,"19_10"=6,"19_19"=7,"10_NA"=100,"19_NA"=101,"NA_10"=200,"NA_12"=201,"NA_NA"=300))
 
 dataset$clase <- NULL
 dataset$Master_tadelantosefectivo <- NULL
@@ -98,4 +97,14 @@ dataset$ttitulos <- NULL
 dataset$nueva.1 <- NULL
 dataset$foto_mes <- NULL
 
-write.table(dataset, file=archivo_salida, row.names=FALSE, quote=FALSE, sep="\t") 
+dataset$Master_Fvencimiento <- NULL
+dataset$Master_Finiciomora <- NULL
+dataset$Master_fultimo_cierre <- NULL
+dataset$Master_fechaalta <- NULL
+
+dataset$Visa_Fvencimiento <- NULL
+dataset$Visa_Finiciomora <- NULL
+dataset$Visa_fultimo_cierre <- NULL
+dataset$Visa_fechaalta <- NULL
+
+write.table(dataset, file=archivo_salida, row.names=FALSE, quote=FALSE, sep="\t")
