@@ -3,11 +3,11 @@ library(caret)
 
 semilla <- 102191
 set.seed(semilla)
-ntree.limit <- 480
+ntree.limit <- 440
 imputation.method <- -9999999999
 probability.threshold <- 0.03125
 archivo.entrada <- "data/data.futuro.xgboost.tsv"
-archivo.salida <- paste("prediction", semilla, ntree.limit, probability.threshold, ".txt")
+archivo.salida <- paste("prediction", semilla, ntree.limit, probability.threshold, "txt", sep = ".")
 model.name <- "models/xgboost.14.19.550.102191.-9999999999.FALSE.final.model"
 
 ## --------------------------------------------------------------------------------

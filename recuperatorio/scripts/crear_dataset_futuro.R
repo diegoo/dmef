@@ -50,7 +50,14 @@ dataset$binaria.ttarjeta_master_debitos_automaticos        <- ifelse(dataset$tta
 dataset$binaria.ttarjeta_visa                              <- ifelse(dataset$ttarjeta_visa=="Y", 1, 0)
 dataset$binaria.ttarjeta_visa_debitos_automaticos          <- ifelse(dataset$ttarjeta_visa_debitos_automaticos=="Y", 1, 0)
 dataset$binaria.ttitulos                                   <- ifelse(dataset$ttitulos=="Y", 1, 0)
-dataset$binaria.nueva.1                                    <- revalue(dataset$nueva.1, c("10_10"=1,"10_11"=2,"10_12"=3,"10_19"=4,"19_10"=6,"19_19"=7,"10_NA"=100,"19_NA"=101,"NA_10"=200,"NA_12"=201,"NA_NA"=300))
+## dataset$binaria.nueva.1                                    <- as.numeric(revalue(dataset$nueva.1, c("10_10"=1,"10_11"=2,"10_12"=3,"10_19"=4,"19_10"=6,"19_19"=7,"12_10"=10,"10_NA"=100,"19_NA"=101,"NA_10"=200,"NA_12"=201,"NA_NA"=300,"NA_19"=400,"12_NA"=500)))
+dataset$binaria.nueva.1                                    <- as.numeric(revalue(dataset$nueva.1, c("10_10"=1, "10_11"=2, "10_12"=3, "10_19"=4,
+                                                                                                    "11_10"=10,"11_11"=11,"11_12"=12,"11_19"=13,
+                                                                                                    "12_10"=30,"12_11"=31,"12_12"=32,"12_19"=33,
+                                                                                                    "19_10"=40,"19_11"=41,"19_12"=42,"19_19"=43,
+                                                                                                    "10_NA"=100,"11_NA"=200,"12_NA"=300,"19_NA"=400,
+                                                                                                    "NA_10"=400,"NA_11"=500,"NA_12"=600,"NA_19"=700,
+                                                                                                    "NA_NA"=1000)))
 
 dataset$clase <- NULL
 dataset$Master_tadelantosefectivo <- NULL

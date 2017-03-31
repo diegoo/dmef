@@ -68,7 +68,8 @@ for (semilla in semillas) {
         min_child_weight = vmin.child.weight, max_depth = vmax.depth, nround = vnround,
         eval_metric = "merror", objective = 'multi:softprob', num_class = 2, nthread = 8)
 
-    model.name <- paste("models", paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep="."), sep="/")
+    ## model.name <- paste("models", paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep="."), sep="/")
+    model.name <- "final.model"
     xgb.save(modelo, model.name)
 }
 
@@ -86,7 +87,8 @@ for (semilla in semillas) {
     dataset.testing.sinclase.m <- as.matrix(dataset.testing.sinclase)
 
     ## model.name <- "xgboost.14.19.550.102191.-9999999999.FALSE.model"
-    model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep=".")
+    ## model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep=".")
+    model.name <- "final.model"
     modelo.loaded <- xgb.load(paste("models", model.name, sep="/"))
     
     for (i in seq(400, vnround, 10)) { 
@@ -388,3 +390,60 @@ abline(h = max(ymeans$y))
 ##     }
 ## }
 
+## --------------------------------------------------------------------------------
+
+## con fechas en días
+
+## ids.elegidos:  3011 ,semilla:  102191 ntree.limit:  400 total 815250 sample.total:  2717500 
+## ids.elegidos:  2831 ,semilla:  102191 ntree.limit:  410 total 844250 sample.total:  2814167 
+## ids.elegidos:  2703 ,semilla:  102191 ntree.limit:  420 total 852250 sample.total:  2840833 
+## ids.elegidos:  2589 ,semilla:  102191 ntree.limit:  430 total 848750 sample.total:  2829167 
+## ids.elegidos:  2488 ,semilla:  102191 ntree.limit:  440 total 850000 sample.total:  2833333 
+## ids.elegidos:  2390 ,semilla:  102191 ntree.limit:  450 total 842500 sample.total:  2808333 
+## ids.elegidos:  2322 ,semilla:  102191 ntree.limit:  460 total 835500 sample.total:  2785000 
+## ids.elegidos:  2239 ,semilla:  102191 ntree.limit:  470 total 808250 sample.total:  2694167 
+## ids.elegidos:  2183 ,semilla:  102191 ntree.limit:  480 total 806250 sample.total:  2687500 
+## ids.elegidos:  2125 ,semilla:  102191 ntree.limit:  490 total 812750 sample.total:  2709167 
+## ids.elegidos:  2086 ,semilla:  102191 ntree.limit:  500 total 814500 sample.total:  2715000 
+## ids.elegidos:  2032 ,semilla:  102191 ntree.limit:  510 total 812000 sample.total:  2706667 
+## ids.elegidos:  1994 ,semilla:  102191 ntree.limit:  520 total 821500 sample.total:  2738333 
+## ids.elegidos:  1961 ,semilla:  102191 ntree.limit:  530 total 821750 sample.total:  2739167 
+## ids.elegidos:  1934 ,semilla:  102191 ntree.limit:  540 total 804500 sample.total:  2681667 
+## ids.elegidos:  1916 ,semilla:  102191 ntree.limit:  550 total 793000 sample.total:  2643333 
+
+## umbra 0.027
+
+## ids.elegidos:  4010 ,semilla:  102191 ntree.limit:  400 total 685500 sample.total:  2285000 
+## ids.elegidos:  3765 ,semilla:  102191 ntree.limit:  410 total 714750 sample.total:  2382500 
+## ids.elegidos:  3557 ,semilla:  102191 ntree.limit:  420 total 742750 sample.total:  2475833 
+## ids.elegidos:  3363 ,semilla:  102191 ntree.limit:  430 total 783250 sample.total:  2610833 
+## ids.elegidos:  3214 ,semilla:  102191 ntree.limit:  440 total 780500 sample.total:  2601667 
+## ids.elegidos:  3075 ,semilla:  102191 ntree.limit:  450 total 815250 sample.total:  2717500 
+## ids.elegidos:  2963 ,semilla:  102191 ntree.limit:  460 total 843250 sample.total:  2810833 
+## ids.elegidos:  2846 ,semilla:  102191 ntree.limit:  470 total 848500 sample.total:  2828333 
+## ids.elegidos:  2761 ,semilla:  102191 ntree.limit:  480 total 853750 sample.total:  2845833 
+## ids.elegidos:  2708 ,semilla:  102191 ntree.limit:  490 total 843000 sample.total:  2810000 
+## ids.elegidos:  2641 ,semilla:  102191 ntree.limit:  500 total 835750 sample.total:  2785833 
+## ids.elegidos:  2586 ,semilla:  102191 ntree.limit:  510 total 817500 sample.total:  2725000 
+## ids.elegidos:  2528 ,semilla:  102191 ntree.limit:  520 total 816000 sample.total:  2720000 
+## ids.elegidos:  2479 ,semilla:  102191 ntree.limit:  530 total 796250 sample.total:  2654167 
+## ids.elegidos:  2440 ,semilla:  102191 ntree.limit:  540 total 814000 sample.total:  2713333 
+## ids.elegidos:  2401 ,semilla:  102191 ntree.limit:  550 total 807750 sample.total:  2692500
+
+
+## data train total:
+## 1103 SI
+## 151489 NO
+## proporcion 0.007281057
+
+## data train test:
+
+## 339 SI
+## 45438 NO
+## proporcion 0.007460716
+## entregar 2703
+## entregar = SI * 8 aprox => 1103 * 7.973451 => 8794 
+
+## data futuro:
+
+## 
