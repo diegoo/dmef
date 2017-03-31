@@ -312,7 +312,8 @@ dataset$nueva.309 <- dataset$Master_msaldodolares / dataset$Master_mfinanciacion
 dataset$nueva.310 <- dataset$Master_msaldopesos / dataset$Master_mfinanciacion_limite
 dataset$nueva.311 <- dataset$Master_msaldototal / dataset$Master_mfinanciacion_limite
 
-dias.desde.fotomes <- function(x) { if (is.na(x)) { return(-1000) } else { return(20150630-x) } }
+## dias.desde.fotomes <- function(x) { if (is.na(x)) { return(-1000) } else { return(20150630-x) } }
+dias.desde.fotomes <- function(x) { if (is.na(x)) { return(999999999) } else { return(as.numeric(as.Date("20150630", "%Y%m%d") - as.Date(as.character(x), "%Y%m%d"))) } }
 
 dataset$nueva.f02.Master_Fvencimiento   <- mapply(dias.desde.fotomes, dataset$Master_Fvencimiento)
 dataset$nueva.f03.Master_Finiciomora    <- mapply(dias.desde.fotomes, dataset$Master_Finiciomora)
@@ -324,4 +325,5 @@ dataset$nueva.f08.Visa_Finiciomora      <- mapply(dias.desde.fotomes, dataset$Vi
 dataset$nueva.f09.Visa_fultimo_cierre   <- mapply(dias.desde.fotomes, dataset$Visa_fultimo_cierre)
 dataset$nueva.f10.Visa_fechaalta        <- mapply(dias.desde.fotomes, dataset$Visa_fechaalta)
 
-write.table(dataset, file="data.con.nuevas.variables.tsv", row.names=FALSE, quote=FALSE, sep="\t")
+## write.table(dataset, file="data.con.nuevas.variables.tsv", row.names=FALSE, quote=FALSE, sep="\t")
+write.table(dataset, file="data/data.final.tsv", row.names=FALSE, quote=FALSE, sep="\t")

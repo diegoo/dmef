@@ -10,11 +10,11 @@ probability.threshold <- 0.03125
 imputation.method <- -9999999999
 use.weights <- FALSE ## TRUE
 
-semillas <- c(102191, 200177, 410551, 552581, 892237) 
+semillas <- c(102191) ##, 200177, 410551, 552581, 892237) 
 
 ## READ DATA --------------------------------------------------------------------------------
 
-archivo.entrada <- "data/dataset.xgboost.tsv"
+archivo.entrada <- "data/data.train.xgboost.tsv"
 dataset <- read.table(archivo.entrada, header=TRUE, sep="\t", row.names="id_cliente")
 dataset[is.na(dataset)] <- imputation.method
 
@@ -68,7 +68,7 @@ for (semilla in semillas) {
         min_child_weight = vmin.child.weight, max_depth = vmax.depth, nround = vnround,
         eval_metric = "merror", objective = 'multi:softprob', num_class = 2, nthread = 8)
 
-    model.name <- paste("models", paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "model", sep="."), sep="/")
+    model.name <- paste("models", paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep="."), sep="/")
     xgb.save(modelo, model.name)
 }
 
@@ -86,7 +86,7 @@ for (semilla in semillas) {
     dataset.testing.sinclase.m <- as.matrix(dataset.testing.sinclase)
 
     ## model.name <- "xgboost.14.19.550.102191.-9999999999.FALSE.model"
-    model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "model", sep=".")
+    model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep=".")
     modelo.loaded <- xgb.load(paste("models", model.name, sep="/"))
     
     for (i in seq(400, vnround, 10)) { 
@@ -99,6 +99,15 @@ for (semilla in semillas) {
         ganancias <- rbind(ganancias, data.frame(semilla=semilla, ntree.limit=ntree.limit, sample.total=total, total=total / 0.30))
     }
 }
+
+## PLOT --------------------------------------------------------------------------------
+
+importance.matrix <-xgb.importance(names(dataset.testing), model = modelo.loaded) ## , data = dataset.training.sinclase, label = dataset.training$binaria.clase)
+xgb.plot.importance(importance.matrix)
+xgb.dump(modelo, with.stats=T, filename_dump="tree.dump")
+## xgb.plot.tree(modelo.loaded, feature_names=names(dataset.training.sinclase), filename_dump="tree.dump")
+
+## MEASURE --------------------------------------------------------------------------------
 
 max.ganancia <- ganancias[which.max(ganancias$total),]
 max.ganancia
@@ -145,7 +154,6 @@ for (i in seq(400, vnround, 10)) {
 ##          540 2301667
 ##          550 2306167
 
-
 mean.ganancias <- aggregate(ganancias, list(ganancias$semilla, ganancias$ntree.limit), FUN=mean, na.rm=TRUE)[,c('semilla', 'ntree.limit','total')]
 best.mean.ganancias <- subset(mean.ganancias, total > 2200000)
 library(dplyr); arrange(best.mean.ganancias, desc(total))
@@ -153,27 +161,6 @@ s1 <- subset(best.mean.ganancias, semilla == semillas[1])
 s5 <- subset(best.mean.ganancias, semilla == semillas[5])
 plot(s1$ntree.limit, s1$total, type='l')
 plot(s5$ntree.limit, s5$total, type='l')
-
-## PLOT --------------------------------------------------------------------------------
-
-importance.matrix <-xgb.importance(names(dataset.testing), model = modelo.loaded) ## , data = dataset.training.sinclase, label = dataset.training$binaria.clase)
-xgb.plot.importance(importance.matrix)
-xgb.dump(modelo, with.stats=T, filename_dump="tree.dump")
-## xgb.plot.tree(modelo.loaded, feature_names=names(dataset.training.sinclase), filename_dump="tree.dump")
-
-## FINAL PREDICTION --------------------------------------------------------------------------------
-
-archivo.entrada <- "data/dataset.xgboost.FUTURO.tsv"
-dataset.futuro <- read.table(archivo.entrada, header=TRUE, sep="\t", row.names="id_cliente")
-dataset.futuro[is.na(dataset.futuro)] <- imputation.method
-semilla <- 102191
-
-## assert!
-## length(rownames(dataset.testing.sinclase)) == length(testing.prediccion) / 2
-
-ids.elegidos <- elegir.clientes(testing.prediccion, rownames(dataset.testing.sinclase), 0.03125)
-
-## --------------------------------------------------------------------------------
 
 ## el mejor promedio entre semillas es ntree.limit 520:
 ## > blah <- for (i in seq(400, 700, 10)) { cat(i, mean(subset(ganancias, ntree.limit==i)$total), '\n') }
@@ -390,3 +377,14 @@ abline(h = max(ymeans$y))
 ## ids.elegidos:  2042 ,semilla:  892237 ntree.limit:  530 total 689500 sample.total:  2298333 
 ## ids.elegidos:  2003 ,semilla:  892237 ntree.limit:  540 total 675250 sample.total:  2250833 
 ## ids.elegidos:  1987 ,semilla:  892237 ntree.limit:  550 total 679250 sample.total:  2264167 
+
+
+## fechas <- c()
+## for (x in c(20180228,20160831,20170331,20150831,20160630,20170630,20160731,20160430,20180731,20151231,20170731,20160930,20170831,20180131,20161031,20160531,20171130,20180430,20170131,20150930,20151031,20180630,20180531,20170228,20180331,20161231,20170531,20171031,20171231,20080430,20151130,20161130,20170430,20170930,20130630,20160331,20121130,20080228,NA,20070831,20070731,20150731,20160228,20090831,20080630,20130331,20140630,20160131,20130131,20140331,20020630,20180831,20070331,20111231,20100831,20131130,20070630,20130831,20100131,20110331,20100731,20110630,20100630,20120131,20101231,20110430,20080930,20080831,20100331,20120430,20091130,20150630,20140731,20141130,20030731,20090731,20150228,20071031,20120331,20081031,20080531,20080131,20061130,20140831,20140531,20081231,99991231,20120930,20080731,20090331,20070430,20150531,20110228,20090228,20110531,20081130,20140930,20070131,20090531,20070531,20100228,20080331,20150430,20030630,20140228,20150131,20090630,20110831,20120731,20070930,20090131,20110731,20140430,20131231,20110131,20090930,20150331,20141031,20071130,20071231,20100430,20120228,20120630,20130430,20140131,20061231,20091231,20131031,20130228,20111031,20141231,20130731,20120831,20060131,20100930,20090430,20100531,20110930,20130531,20120531,20130930,20121031,20091031,20101031,20111130)) {
+##     if (is.na(x)) {
+##         fechas <- append(fechas, 999999999)
+##     } else {
+##         fechas <- append(fechas, as.numeric(as.Date("20150630", "%Y%m%d") - as.Date(as.character(x), "%Y%m%d")))
+##     }
+## }
+

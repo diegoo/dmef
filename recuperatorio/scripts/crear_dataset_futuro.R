@@ -1,7 +1,9 @@
 library(plyr)
 
-archivo_entrada <- "data/data.con.nuevas.variables.FUTURO.tsv"
-archivo_salida  <- "data/dataset.xgboost.futuro.tsv"
+## archivo_entrada <- "data/data.con.nuevas.variables.FUTURO.tsv"
+## archivo_salida  <- "data/dataset.xgboost.futuro.tsv"
+archivo_entrada <- "data/data.futuro.tsv"
+archivo_salida  <- "data/data.futuro.xgboost.tsv"
 
 dataset <- read.table(archivo_entrada, header=TRUE, sep="\t")
 

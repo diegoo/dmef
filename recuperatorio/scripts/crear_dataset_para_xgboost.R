@@ -1,7 +1,7 @@
 library(plyr)
 
-archivo_entrada <- "data/data.con.nuevas.variables.SI.NO.tsv"
-archivo_salida  <- "data/dataset.xgboost.tsv"
+archivo_entrada <- "data/data.train.tsv"
+archivo_salida  <- "data/data.train.xgboost.tsv"
 
 dataset <- read.table(archivo_entrada, header=TRUE, sep="\t")
 
