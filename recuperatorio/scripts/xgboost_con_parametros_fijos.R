@@ -10,7 +10,7 @@ probability.threshold <- 0.03125
 imputation.method <- -9999999999
 use.weights <- FALSE ## TRUE
 
-semillas <- c(102191, 200177, 410551, 552581, 892237)
+semillas <- c(102191, 200177, 410551, 552581, 892237) 
 
 ## READ DATA --------------------------------------------------------------------------------
 
@@ -68,8 +68,8 @@ for (semilla in semillas) {
         min_child_weight = vmin.child.weight, max_depth = vmax.depth, nround = vnround,
         eval_metric = "merror", objective = 'multi:softprob', num_class = 2, nthread = 8)
 
-    model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "model", sep=".")
-    xgb.save(modelo, cat("models/", model.name, sep=""))
+    model.name <- paste("models", paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "model", sep="."), sep="/")
+    xgb.save(modelo, model.name)
 }
 
 ## PREDICT --------------------------------------------------------------------------------
@@ -85,12 +85,11 @@ for (semilla in semillas) {
     dataset.testing.sinclase <- dataset.testing[, !(names(dataset.testing) %in% c("binaria.clase"))]
     dataset.testing.sinclase.m <- as.matrix(dataset.testing.sinclase)
 
-    ## model.name <- "models/xgboost.14.19.2000.102191.-9999999999.TRUE.model" ## "xgboost.14.19.530.102191.-9999999999.TRUE.model"
-    ## modelo.loaded <- xgb.load(model.name)
+    ## model.name <- "xgboost.14.19.550.102191.-9999999999.FALSE.model"
     model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "model", sep=".")
-    modelo.loaded <- cat("models", model.name, sep="/"))
+    modelo.loaded <- xgb.load(paste("models", model.name, sep="/"))
     
-    for (i in seq(380, vnround, 10)) { 
+    for (i in seq(400, vnround, 10)) { 
         ntree.limit <- i
         testing.prediccion = predict(modelo.loaded, dataset.testing.sinclase.m, ntreelimit = ntree.limit)
         id.cliente <- rownames(dataset.testing)
@@ -103,6 +102,49 @@ for (semilla in semillas) {
 
 max.ganancia <- ganancias[which.max(ganancias$total),]
 max.ganancia
+
+mean.ganancias <- data.frame(ntree.limit=NULL, total=NULL)
+for (i in seq(400, vnround, 10)) {
+    mean.ganancias <- rbind(mean.ganancias, data.frame(ntree.limit=i, total=mean(subset(ganancias, ntree.limit==i)$total)))
+}
+
+##  ntree.limit   total
+##          400 2086000
+##          410 2180000
+##          420 2206667
+##          430 2245667
+##          440 2251333
+##          450 2281833
+##          460 2288667
+##          470 2260333
+##          480 2293833
+##          490 2297333
+##          500 2284500
+##          510 2305667
+##          520 2307833
+##          530 2285667
+##          540 2280500
+##          550 2288667
+
+## y usando umbral de 0.0275
+##  ntree.limit   total
+##          400 1829167
+##          410 1913000
+##          420 2001667
+##          430 2055333
+##          440 2123167
+##          450 2160833
+##          460 2193167
+##          470 2213167
+##          480 2243500
+##          490 2237167
+##          500 2247000
+##          510 2265167
+##          520 2291167
+##          530 2288333
+##          540 2301667
+##          550 2306167
+
 
 mean.ganancias <- aggregate(ganancias, list(ganancias$semilla, ganancias$ntree.limit), FUN=mean, na.rm=TRUE)[,c('semilla', 'ntree.limit','total')]
 best.mean.ganancias <- subset(mean.ganancias, total > 2200000)
@@ -259,3 +301,92 @@ lines(x, y3, col="green")
 lines(x, y4, col="yellow")
 lines(x, y5, col="grey") 
 lines(x, y6, col="brown")
+
+ymeans <- data.frame(x=x, y=rep(0, times=length(x)))
+for (i in 1:length(x)) { ymeans[i, 2] <- mean(y1[i], y2[i], y3[i], y4[i], y5[i], y6[i]) }
+plot(ymeans, type="l")
+abline(h = max(ymeans$y))
+## mejores picos (promedio de los umbrales entre 0.027 y 0.035, con semilla 102191): 460, 480, 490
+
+## --------------------------------------------------------------------------------
+
+## ids.elegidos:  2994 ,semilla:  102191 ntree.limit:  400 total 827500 sample.total:  2758333 
+## ids.elegidos:  2819 ,semilla:  102191 ntree.limit:  410 total 831250 sample.total:  2770833 
+## ids.elegidos:  2699 ,semilla:  102191 ntree.limit:  420 total 829250 sample.total:  2764167 
+## ids.elegidos:  2586 ,semilla:  102191 ntree.limit:  430 total 849500 sample.total:  2831667 
+## ids.elegidos:  2488 ,semilla:  102191 ntree.limit:  440 total 850000 sample.total:  2833333 
+## ids.elegidos:  2410 ,semilla:  102191 ntree.limit:  450 total 837500 sample.total:  2791667 
+## ids.elegidos:  2333 ,semilla:  102191 ntree.limit:  460 total 824750 sample.total:  2749167 
+## ids.elegidos:  2271 ,semilla:  102191 ntree.limit:  470 total 808250 sample.total:  2694167 
+## ids.elegidos:  2206 ,semilla:  102191 ntree.limit:  480 total 824500 sample.total:  2748333 
+## ids.elegidos:  2161 ,semilla:  102191 ntree.limit:  490 total 819750 sample.total:  2732500 
+## ids.elegidos:  2110 ,semilla:  102191 ntree.limit:  500 total 816500 sample.total:  2721667 
+## ids.elegidos:  2069 ,semilla:  102191 ntree.limit:  510 total 826750 sample.total:  2755833 
+## ids.elegidos:  2020 ,semilla:  102191 ntree.limit:  520 total 823000 sample.total:  2743333 
+## ids.elegidos:  1989 ,semilla:  102191 ntree.limit:  530 total 814750 sample.total:  2715833 
+## ids.elegidos:  1959 ,semilla:  102191 ntree.limit:  540 total 814250 sample.total:  2714167 
+## ids.elegidos:  1934 ,semilla:  102191 ntree.limit:  550 total 812500 sample.total:  2708333 
+## ids.elegidos:  3215 ,semilla:  200177 ntree.limit:  400 total 580250 sample.total:  1934167 
+## ids.elegidos:  3030 ,semilla:  200177 ntree.limit:  410 total 618500 sample.total:  2061667 
+## ids.elegidos:  2898 ,semilla:  200177 ntree.limit:  420 total 635500 sample.total:  2118333 
+## ids.elegidos:  2765 ,semilla:  200177 ntree.limit:  430 total 636750 sample.total:  2122500 
+## ids.elegidos:  2661 ,semilla:  200177 ntree.limit:  440 total 622750 sample.total:  2075833 
+## ids.elegidos:  2574 ,semilla:  200177 ntree.limit:  450 total 636500 sample.total:  2121667 
+## ids.elegidos:  2487 ,semilla:  200177 ntree.limit:  460 total 634250 sample.total:  2114167 
+## ids.elegidos:  2416 ,semilla:  200177 ntree.limit:  470 total 620000 sample.total:  2066667 
+## ids.elegidos:  2339 ,semilla:  200177 ntree.limit:  480 total 631250 sample.total:  2104167 
+## ids.elegidos:  2270 ,semilla:  200177 ntree.limit:  490 total 648500 sample.total:  2161667 
+## ids.elegidos:  2226 ,semilla:  200177 ntree.limit:  500 total 651500 sample.total:  2171667 
+## ids.elegidos:  2173 ,semilla:  200177 ntree.limit:  510 total 664750 sample.total:  2215833 
+## ids.elegidos:  2132 ,semilla:  200177 ntree.limit:  520 total 667000 sample.total:  2223333 
+## ids.elegidos:  2093 ,semilla:  200177 ntree.limit:  530 total 668750 sample.total:  2229167 
+## ids.elegidos:  2058 ,semilla:  200177 ntree.limit:  540 total 645500 sample.total:  2151667 
+## ids.elegidos:  2028 ,semilla:  200177 ntree.limit:  550 total 653000 sample.total:  2176667 
+## ids.elegidos:  3143 ,semilla:  410551 ntree.limit:  400 total 582250 sample.total:  1940833 
+## ids.elegidos:  2968 ,semilla:  410551 ntree.limit:  410 total 618000 sample.total:  2060000 
+## ids.elegidos:  2813 ,semilla:  410551 ntree.limit:  420 total 624750 sample.total:  2082500 
+## ids.elegidos:  2703 ,semilla:  410551 ntree.limit:  430 total 636250 sample.total:  2120833 
+## ids.elegidos:  2567 ,semilla:  410551 ntree.limit:  440 total 646250 sample.total:  2154167 
+## ids.elegidos:  2478 ,semilla:  410551 ntree.limit:  450 total 652500 sample.total:  2175000 
+## ids.elegidos:  2390 ,semilla:  410551 ntree.limit:  460 total 666500 sample.total:  2221667 
+## ids.elegidos:  2322 ,semilla:  410551 ntree.limit:  470 total 651500 sample.total:  2171667 
+## ids.elegidos:  2247 ,semilla:  410551 ntree.limit:  480 total 654250 sample.total:  2180833 
+## ids.elegidos:  2187 ,semilla:  410551 ntree.limit:  490 total 637250 sample.total:  2124167 
+## ids.elegidos:  2144 ,semilla:  410551 ntree.limit:  500 total 624000 sample.total:  2080000
+## ids.elegidos:  2096 ,semilla:  410551 ntree.limit:  510 total 636000 sample.total:  2120000 
+## ids.elegidos:  2056 ,semilla:  410551 ntree.limit:  520 total 630000 sample.total:  2100000 
+## ids.elegidos:  2030 ,semilla:  410551 ntree.limit:  530 total 628500 sample.total:  2095000 
+## ids.elegidos:  1996 ,semilla:  410551 ntree.limit:  540 total 637000 sample.total:  2123333 
+## ids.elegidos:  1963 ,semilla:  410551 ntree.limit:  550 total 637250 sample.total:  2124167 
+## ids.elegidos:  3159 ,semilla:  552581 ntree.limit:  400 total 538250 sample.total:  1794167 
+## ids.elegidos:  2996 ,semilla:  552581 ntree.limit:  410 total 563000 sample.total:  1876667 
+## ids.elegidos:  2852 ,semilla:  552581 ntree.limit:  420 total 575000 sample.total:  1916667 
+## ids.elegidos:  2717 ,semilla:  552581 ntree.limit:  430 total 592750 sample.total:  1975833 
+## ids.elegidos:  2635 ,semilla:  552581 ntree.limit:  440 total 605250 sample.total:  2017500 
+## ids.elegidos:  2534 ,semilla:  552581 ntree.limit:  450 total 622500 sample.total:  2075000 
+## ids.elegidos:  2453 ,semilla:  552581 ntree.limit:  460 total 634750 sample.total:  2115833 
+## ids.elegidos:  2378 ,semilla:  552581 ntree.limit:  470 total 629500 sample.total:  2098333 
+## ids.elegidos:  2304 ,semilla:  552581 ntree.limit:  480 total 632000 sample.total:  2106667 
+## ids.elegidos:  2246 ,semilla:  552581 ntree.limit:  490 total 646500 sample.total:  2155000 
+## ids.elegidos:  2186 ,semilla:  552581 ntree.limit:  500 total 637500 sample.total:  2125000 
+## ids.elegidos:  2141 ,semilla:  552581 ntree.limit:  510 total 648750 sample.total:  2162500 
+## ids.elegidos:  2097 ,semilla:  552581 ntree.limit:  520 total 651750 sample.total:  2172500 
+## ids.elegidos:  2068 ,semilla:  552581 ntree.limit:  530 total 627000 sample.total:  2090000 
+## ids.elegidos:  2045 ,semilla:  552581 ntree.limit:  540 total 648750 sample.total:  2162500 
+## ids.elegidos:  2004 ,semilla:  552581 ntree.limit:  550 total 651000 sample.total:  2170000 
+## ids.elegidos:  3133 ,semilla:  892237 ntree.limit:  400 total 600750 sample.total:  2002500 
+## ids.elegidos:  2947 ,semilla:  892237 ntree.limit:  410 total 639250 sample.total:  2130833 
+## ids.elegidos:  2794 ,semilla:  892237 ntree.limit:  420 total 645500 sample.total:  2151667 
+## ids.elegidos:  2667 ,semilla:  892237 ntree.limit:  430 total 653250 sample.total:  2177500 
+## ids.elegidos:  2573 ,semilla:  892237 ntree.limit:  440 total 652750 sample.total:  2175833 
+## ids.elegidos:  2457 ,semilla:  892237 ntree.limit:  450 total 673750 sample.total:  2245833 
+## ids.elegidos:  2365 ,semilla:  892237 ntree.limit:  460 total 672750 sample.total:  2242500 
+## ids.elegidos:  2299 ,semilla:  892237 ntree.limit:  470 total 681250 sample.total:  2270833 
+## ids.elegidos:  2229 ,semilla:  892237 ntree.limit:  480 total 698750 sample.total:  2329167 
+## ids.elegidos:  2184 ,semilla:  892237 ntree.limit:  490 total 694000 sample.total:  2313333 
+## ids.elegidos:  2139 ,semilla:  892237 ntree.limit:  500 total 697250 sample.total:  2324167 
+## ids.elegidos:  2103 ,semilla:  892237 ntree.limit:  510 total 682250 sample.total:  2274167 
+## ids.elegidos:  2072 ,semilla:  892237 ntree.limit:  520 total 690000 sample.total:  2300000 
+## ids.elegidos:  2042 ,semilla:  892237 ntree.limit:  530 total 689500 sample.total:  2298333 
+## ids.elegidos:  2003 ,semilla:  892237 ntree.limit:  540 total 675250 sample.total:  2250833 
+## ids.elegidos:  1987 ,semilla:  892237 ntree.limit:  550 total 679250 sample.total:  2264167 
