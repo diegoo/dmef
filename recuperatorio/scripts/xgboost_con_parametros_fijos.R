@@ -3,10 +3,9 @@ library(caret)
 
 ## PARAMETERS --------------------------------------------------------------------------------
 
-vmax.depth = 8
-vmin.child.weight = 25
+vmax.depth = 12
+vmin.child.weight = 7
 vnround <- 700
-probability.threshold <- 0.03125
 imputation.method <- -9999999999
 use.weights <- FALSE ## TRUE
 
@@ -25,7 +24,7 @@ calcular.ganancia <- function(testing.prediccion, dataset.testing, probability.t
     ids.elegidos <- 0;
     aciertos <- 0;
     for (i in 1:nrow(dataset.testing)) {
-        if (testing.prediccion[i*2] > probability.threshold) {
+        if (testing.prediccion[i] > probability.threshold) { ## *2
             ids.elegidos <- ids.elegidos + 1
             acierto <- dataset.testing[i, c("binaria.clase")] == 1
             if(acierto) { aciertos <- aciertos + 1 }
@@ -53,15 +52,24 @@ for (semilla in semillas) {
     } else {
         xgb.DMatrix(data = data.matrix(dataset.training.sinclase), label = dataset.training$binaria.clase)
     }
-    
+
+    ## tree model
+    ## modelo <- xgboost(
+    ##     data = train.data,
+    ##     eta = 0.01, subsample = 1, colsample_bytree = 0.6, alpha = 0, lambda = 0.1, gamma = 0.01,
+    ##     min_child_weight = vmin.child.weight, max_depth = vmax.depth, nround = vnround,
+    ##     eval_metric = "merror", objective = 'multi:softprob', num_class = 2, nthread = 8)
+
+    ## logistic model
     modelo <- xgboost(
         data = train.data,
-        eta = 0.01, subsample = 1.0, colsample_bytree = 0.6, alpha = 0, lambda = 0.1, gamma = 0.01,
+        booster = "gbtree",
+        eta = 0.01, subsample = 0.7, colsample_bytree = 0.75, alpha = 0, lambda = 0.1, gamma = 0.01,
         min_child_weight = vmin.child.weight, max_depth = vmax.depth, nround = vnround,
-        eval_metric = "merror", objective = 'multi:softprob', num_class = 2, nthread = 8)
+        eval_metric = "auc", objective = 'binary:logistic', nthread = 8)
 
     ## model.name <- paste("models", paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep="."), sep="/")
-    model.name <- "models/final.small.model"
+    model.name <- "models/final.logistic.3.model"
     xgb.save(modelo, model.name)
 }
 
@@ -81,13 +89,13 @@ for (semilla in semillas) {
 
     ## model.name <- "xgboost.14.19.550.102191.-9999999999.FALSE.model"
     ## model.name <- paste("xgboost", vmax.depth, vmin.child.weight, vnround, semilla, imputation.method, use.weights, "final.model", sep=".")
-    model.name <- "final.model"
+    model.name <- "final.logistic.3.model"
     modelo.loaded <- xgb.load(paste("models", model.name, sep="/"))
     
     for (ntree.limit in seq(400, vnround, 10)) { 
         testing.prediccion = predict(modelo.loaded, dataset.testing.sinclase.m, ntreelimit = ntree.limit)
         id.cliente <- rownames(dataset.testing)
-        for (probability.threshold in c(0.0335)) { ## seq(0.0275, 0.04, 0.001)) {
+        for (probability.threshold in seq(0.0275, 0.04, 0.001)) {
             predicciones.archivo.salida <- paste("prediccion", vmax.depth, vmin.child.weight, vnround, probability.threshold, "txt", sep=".")
             total <- calcular.ganancia(testing.prediccion, dataset.testing, probability.threshold, dataset.testing.SI)
             cat("semilla: ", semilla, "ntree.limit: ", ntree.limit, "total", total, "sample.total: ", total / 0.30, "probability.threshold: ", probability.threshold, '\n')
@@ -154,3 +162,48 @@ for (semilla in semillas) {
 ## for (i in 1:length(x)) { ymeans[i, 2] <- mean(y1[i], y2[i], y3[i], y4[i], y5[i], y6[i]) }
 ## plot(ymeans, type="l")
 ## abline(h = max(ymeans$y))
+
+## --------------------------------------------------------------------------------
+
+head(ganancias[order(-ganancias$total),], 40)
+    semilla ntree.limit probability.threshold sample.total   total
+132  102191         500                0.0285       887750 2959167
+71   102191         450                0.0325       882750 2942500
+131  102191         500                0.0275       881000 2936667
+133  102191         500                0.0295       880750 2935833
+94   102191         470                0.0295       880250 2934167
+84   102191         460                0.0325       878750 2929167
+119  102191         490                0.0285       878750 2929167
+59   102191         440                0.0335       878250 2927500
+32   102191         420                0.0325       875000 2916667
+121  102191         490                0.0305       875000 2916667
+120  102191         490                0.0295       874750 2915833
+134  102191         500                0.0305       873750 2912500
+108  102191         480                0.0305       871250 2904167
+47   102191         430                0.0345       871000 2903333
+7    102191         400                0.0335       870250 2900833
+22   102191         410                0.0355       869000 2896667
+20   102191         410                0.0335       868000 2893333
+82   102191         460                0.0305       868000 2893333
+34   102191         420                0.0345       867500 2891667
+97   102191         470                0.0325       867500 2891667
+122  102191         490                0.0315       867500 2891667
+45   102191         430                0.0325       867250 2890833
+70   102191         450                0.0315       867250 2890833
+106  102191         480                0.0285       867250 2890833
+68   102191         450                0.0295       867000 2890000
+56   102191         440                0.0305       866500 2888333
+10   102191         400                0.0365       866000 2886667
+46   102191         430                0.0335       866000 2886667
+55   102191         440                0.0295       864000 2880000
+58   102191         440                0.0325       864000 2880000
+83   102191         460                0.0315       864000 2880000
+72   102191         450                0.0335       863750 2879167
+69   102191         450                0.0305       863250 2877500
+95   102191         470                0.0305       863250 2877500
+60   102191         440                0.0345       863000 2876667
+31   102191         420                0.0315       862750 2875833
+81   102191         460                0.0295       862500 2875000
+96   102191         470                0.0315       862250 2874167
+44   102191         430                0.0315       860000 2866667
+118  102191         490                0.0275       860000 2866667

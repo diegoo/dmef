@@ -4,14 +4,14 @@ library(caret)
 imputation.method <- -9999999999
 semilla <- 102191
 archivo.entrada <- "data/data.futuro.xgboost.tsv"
-model.name <- "models/final.model"
+model.name <- "models/final.logistic.2.model"
 
 ## --------------------------------------------------------------------------------
 
 get.ids <- function(prediction, ids, probability.threshold) {
     predicted.ids <- c()
     for (i in 1:length(ids)) {
-        if (prediction[i*2] > probability.threshold) {
+        if (prediction[i] > probability.threshold) { ## *2
             predicted.ids <- append(predicted.ids, ids[i])
         }
     }
@@ -32,10 +32,10 @@ run <- function(ntree.limit, probability.threshold) {
     model <- xgb.load(model.name)
     set.seed(semilla)
     final.prediction <- predict(model, dataset.m, ntreelimit = ntree.limit)
-    stopifnot(length(rownames(dataset)) == length(final.prediction) / 2)
+    ## stopifnot(length(rownames(dataset)) == length(final.prediction) / 2)
     predicted.ids <- get.ids(final.prediction, ids, probability.threshold)
 
-    archivo.salida <- paste("prediction", semilla, ntree.limit, probability.threshold, "txt", sep = ".")
+    archivo.salida <- paste("prediction", semilla, ntree.limit, probability.threshold, "logistic.txt", sep = ".")
     write(predicted.ids, file = archivo.salida, sep = '\n')
     cat("predicted.ids: ", length(predicted.ids), '\n')
 }
