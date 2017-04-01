@@ -97,9 +97,13 @@ for (semilla in semillas) {
         id.cliente <- rownames(dataset.testing)
         for (probability.threshold in seq(0.0275, 0.045, 0.001)) {
             predicciones.archivo.salida <- paste("prediccion", vmax.depth, vmin.child.weight, vnround, probability.threshold, "txt", sep=".")
-            cat("ntree.limit: ", ntree.limit, "umbral: ", probability.threshold, '\n')
+            
             total.ganancia <- calcular.ganancia(testing.prediccion, dataset.testing, probability.threshold, dataset.testing.SI)
-            ganancias <- rbind(ganancias, data.frame(ntree.limit=ntree.limit, probability.threshold=probability.threshold, total=(total.ganancia / 0.30)))
+            result <- total.ganancia / 0.30; 
+            if (result > 2900000) {
+                cat("ntree.limit: ", ntree.limit, "umbral: ", probability.threshold, '\n')
+                ganancias <- rbind(ganancias, data.frame(ntree.limit=ntree.limit, probability.threshold=probability.threshold, total=result))
+            }
         }
     }
 }

@@ -44,4 +44,8 @@ run <- function(ntree.limit, probability.threshold) {
 ## > run(420, 0.0335)
 ## predicted.ids:  8087 
 
+## logistic.4.model
+## > run(400, 0.0345)
+## predicted.ids:  7978
+
 ## good luck!
