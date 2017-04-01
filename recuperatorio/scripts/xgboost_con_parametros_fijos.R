@@ -24,7 +24,7 @@ calcular.ganancia <- function(testing.prediccion, dataset.testing, probability.t
     ids.elegidos <- 0;
     aciertos <- 0;
     for (i in 1:nrow(dataset.testing)) {
-        if (testing.prediccion[i] > probability.threshold) { ## *2
+        if (testing.prediccion[i] > probability.threshold) { ## *2 para tree model
             ids.elegidos <- ids.elegidos + 1
             acierto <- dataset.testing[i, c("binaria.clase")] == 1
             if(acierto) { aciertos <- aciertos + 1 }
@@ -53,14 +53,14 @@ for (semilla in semillas) {
         xgb.DMatrix(data = data.matrix(dataset.training.sinclase), label = dataset.training$binaria.clase)
     }
 
-    ## tree model
+    ## tree model (segundo mejor)
     ## modelo <- xgboost(
     ##     data = train.data,
     ##     eta = 0.01, subsample = 1, colsample_bytree = 0.6, alpha = 0, lambda = 0.1, gamma = 0.01,
     ##     min_child_weight = vmin.child.weight, max_depth = vmax.depth, nround = vnround,
     ##     eval_metric = "merror", objective = 'multi:softprob', num_class = 2, nthread = 8)
 
-    ## logistic model
+    ## logistic model (mejor hasta ahora)
     modelo <- xgboost(
         data = train.data,
         booster = "gbtree",
